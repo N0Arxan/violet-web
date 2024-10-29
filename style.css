@@ -95,7 +95,7 @@ nav a:nth-child(2){
     font-size: 3.33vw;
 }
 .background .content span{
-    font-size: 5;
+    font-size: 5vw;
     color: #5f426b;
     font-style: italic;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -107,7 +107,6 @@ nav a:nth-child(2){
     margin-top: 1vh;
     color: #ffffff;
     font-size: 1.667vw;
-    color: #FFFFFF;
 }
 
 .background .content .img img{
@@ -399,11 +398,12 @@ footer a{
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(195deg) brightness(102%) contrast(102%);
         animation: aribapabajo 1s infinite ;
         position: relative;
+        margin-top: 1vh;
     
     }
 
     .scroll{
-        margin-top: 13vh;
+        margin-top: 15vh;
     }
     .scroll p span{
         display: none;
@@ -411,5 +411,56 @@ footer a{
     .scroll p::after{
         content: "Swipe Down";
     }
+
+
+    .main{
+        width: 75%;
+        height: 150vh;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px;
+        flex-direction: column;
+    }
+    .main .place{
+        width: 90%;
+        height: 80%;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.3px);
+        -webkit-backdrop-filter: blur(6.3px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+    .main .place .img{
+        width: 90%;
+
+    }
+    .main .place .img img{
+        position: relative;
+        opacity: 90%;
+        border-radius: 20px;
+
+    }
+    .main .place .img p{
+        color: #FFFFFF;
+        display: inline;
+        font-size: 1.667vw;
+
+    }
+    .main .place .more a{
+        color: #FFFFFF;
+        text-decoration: none;
+        background-color: #5f426b;
+        padding: 10px 40px;
+        border-radius: 10px;
+    }
+
 
   }
