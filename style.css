@@ -41,14 +41,28 @@ nav ul li a{
     text-decoration: none;
     color: white;
     font-size: 1.083vw;
+    transition: font-size 0.5s, color 0.5s;
 }
+nav ul li a:hover{
+    font-weight: bolder;
+    color: #fad9fb;
+    font-size: 1.4vw;
+}
+
+
 nav a:nth-child(2){
     text-align: right;
     color: white;
     text-decoration: none;
     font-size: 1.083vw;
     width: 10%;
+    transition: font-size 0.5s, color 0.5s;
 
+}
+.lang:hover{
+    font-weight: bolder;
+    color: #fad9fb;
+    font-size: 1.4vw;
 }
 .background{
     background-image: url("images/Back.jpg");
@@ -400,6 +414,10 @@ footer a{
 
 @media (330px <= width <= 700px) {
 
+    .background{
+        background-attachment: unset;
+    }
+
     nav ul li a{
         font-size: 3vw;
     }
@@ -451,8 +469,11 @@ footer a{
     .scroll p span{
         display: none;
     }
-    .scroll p::after{
+    .scroll #eng::after{
         content: "Swipe Down";
+    }
+    .scroll #spn::after{
+        content: "Desliza abajo";
     }
 
 
@@ -531,7 +552,6 @@ footer a{
         font-size: 3vw;
     }
     .our-contact .half-2 form input::placeholder{
-        color: #ffffff;
         text-align: center;
     }
 
@@ -618,5 +638,19 @@ footer a{
         font-size: 2.6vw;
     }
 
+
+}
+
+@media (height <= 726px){
+
+    .half{
+        height: 140vh;
+    }
+    .places{
+        height: 135vh;
+    }
+    .main{
+        height: 145vh;
+    }
 
 }
