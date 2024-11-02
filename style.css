@@ -199,6 +199,10 @@ nav a:nth-child(2){
     background-color: #5f426b;
     padding: 10px 40px;
     border-radius: 10px;
+    transition: all 500ms;
+}
+.main .place .more a:hover{
+    box-shadow: 0 0 15px rgba(33,33,33,.2); 
 }
 
 
@@ -260,6 +264,7 @@ nav a:nth-child(2){
 .our-contact .half-2 form button{
     width: 100%;
     box-shadow: 0px 10px 14px -7px#5f426b;
+    transition: all 500ms;
 	background-color:#5f426b;
 	border-radius:8px;
 	display:inline-block;
@@ -272,6 +277,10 @@ nav a:nth-child(2){
 	text-shadow:0px 1px 0px #3d768a;
     border: none;
     margin-top: 4vh;
+}
+
+.our-contact form button:hover{
+    box-shadow: 0 0 15px rgba(33,33,33,.2); 
 }
 
 .our-contact .half-1 .team-cart{
@@ -653,4 +662,19 @@ footer a{
         height: 145vh;
     }
 
+}
+
+@media (min-width : 1000px) and (max-height:800px){
+    .background{
+        height:120vh;
+    }
+    .half{
+        height: 90vh;
+    }
+    .places{
+        height: 150vh;
+    }
+    .main{
+        height: 185vh;
+    }
 }
