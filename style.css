@@ -663,18 +663,3 @@ footer a{
     }
 
 }
-
-@media (min-width : 1000px) and (max-height:800px){
-    .background{
-        height:120vh;
-    }
-    .half{
-        height: 90vh;
-    }
-    .places{
-        height: 150vh;
-    }
-    .main{
-        height: 185vh;
-    }
-}
