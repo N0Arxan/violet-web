@@ -346,29 +346,8 @@ nav a:nth-child(2){
     font-size: 0.9vw;
 }
 
-.loc2 table {
-    border-collapse: collapse;
-    width: 50%;
-    margin: 1vh auto;
-    border-spacing: 0;
 
-}
-
-.loc2 table th, td {
-    text-align: center;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    width:50% ;
-}
-tr{
-    transition: background-color 1s ease;
-}
-.loc2 table tr:hover{
-    background-color: #5f426b;
-}
-
-
-.loc2{
+.TikiTaka{
     background: rgba(255, 255, 255, 0.16);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.3px);
@@ -381,9 +360,31 @@ tr{
     border-radius: 15px;
     padding: 15px;
 }
-.loc2 h2{
-    font-size: 2.5vw;
+.TikiTaka .hor{
+    margin: 0.5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    height: 6vh;
 }
+.TikiTaka .ver{
+    margin: 0.5vh;
+    width: 32%;
+    height: 100%;
+    background-color: #3d768a;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    color: white;
+    font-size: 2vw;
+}
+
 
 
 
@@ -584,7 +585,7 @@ footer a{
     }
 
 
-    .loc2 table {
+    .TikiTaka table {
 
         width: 50%;
         margin: 1vh auto;
@@ -592,7 +593,7 @@ footer a{
 
     }
 
-    .loc2 table th, td {
+    .TikiTaka table th, td {
         font-size: 2.2vw;
         text-align: center;
         padding: 8px;
@@ -602,15 +603,15 @@ footer a{
     tr{
         transition: background-color 1s ease;
     }
-    .loc2 table tr:hover{
+    .TikiTaka table tr:hover{
         background-color: #5f426b;
     }
 
 
-    .loc2{
+    .TikiTaka{
         padding: 7px;
     }
-    .loc2 h2{
+    .TikiTaka h2{
         font-size: 4vw;
     }
 
