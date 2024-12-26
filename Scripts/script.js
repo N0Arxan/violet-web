@@ -1,4 +1,44 @@
+$(window).on('load', function () {
+    setTimeout(function () {
+        $('#loader').fadeOut('slow', function () {
+            $('#content').fadeIn('slow');
+        });
+    }, 2000); 
+});
+/////////////////////////////////////////////////////
 
+const translatedElement = document.getElementById('translated');
+let tolang = "en/es"
+
+
+
+
+document.getElementById("Translate").addEventListener("click", async () => {
+    
+
+    // Show "Translating..." while waiting for the translation
+    text = translatedElement.innerText
+    translatedElement.textContent = "Translating...";
+
+    fetch(`https://lingva.ml/api/v1/${tolang}/${text}`)
+        .then(res => res.json())
+        .then(data => {
+            translatedElement.textContent = data.translation
+            translatedElement.appendChild(span)
+        })
+        .catch(err => console.error(err));
+    
+    tolang = (tolang === "en/es") ? "es/en" : "en/es";
+    
+
+})
+
+
+
+
+////////////////////////////////////////////////////
+
+const reset = document.getElementById('reset')
 function recordDivs(){
     const houses =[]
     let row= document.getElementsByClassName("hor");
@@ -15,28 +55,32 @@ function appendEventL(houses) { // add event listener to every div of array Hous
     for (let i = 0; i < houses.length; i++) {
         addEventL(houses[i])
     }
+    reset.style.display = 'none'
 }
+
 appendEventL(recordDivs())
-
-
 let turn = "x";
 
 
 function changeState(div,turn){
-    //while(true){
-        if (div.innerText === turn) {
-            console.log("invalid input")
-        }
-        else{
-            if (turn==="x"){
+        
+    if (div.innerText === turn) {
+        console.log("invalid input")
+    }else{
+        switch (turn) {
+            case "x":
                 div.innerText = turn;
+                div.removeEventListener("click", div.handler)
                 return "o"
-            }else {
-                div.innerText = turn;
-                return "x"
-            }
-        }
 
+            case "o":
+                div.innerText = turn;
+                div.removeEventListener("click", div.handler)
+                return "x"
+        }
+    }
+
+    
 }
 
 function recordState(houses) {
@@ -55,23 +99,51 @@ function checkResult(moves){
     ]
     for (let comb of winnerCombination) {
         if (moves[comb[0]] === moves[comb[1]] && moves[comb[1]] === moves[comb[2]]) {
-            return moves[comb[0]]
+            if (moves[comb[0]] !==""){
+                
+                return [moves[comb[0]],comb]
+            }
         }
     }
-    return false
+    return [false,false]
 }
 
+function stopGame(array,houses) {
+    for(elem of array){
+        houses[elem].style.backgroundColor = "green"
+    }
+    houses.forEach( div =>{
+        div.removeEventListener("click", div.handler)
+    })
+
+    reset.style.display = 'block'
+    
+    reset.addEventListener('click', ()=>{
+        houses = recordDivs()
+        houses.forEach(div=>{
+            div.innerText=''
+            div.style.backgroundColor='#5f426b'
+        })
+        appendEventL(houses)
+    })
+}
+
+
 function addEventL(div) {
-    div.addEventListener("click", function() {
-        turn = changeState(div,turn)
-        let houses = recordDivs()
-        let moves = recordState(houses)
-        let res = checkResult(moves)
-        if (res !== false) {
-            console.log(res+" has won")
-            // .....
+    
+    function main() {
+        turn = changeState(div, turn);
+        let houses = recordDivs();
+        let moves = recordState(houses);
+        let res = checkResult(moves);
+        if (res[0] !== false) {
+            console.log(res[0] + " has won " + res[1]);
+            stopGame(res[1], houses);
         }
-    });
+    }
+    div.addEventListener("click", main);
+
+    div.handler = main;
 }
 
 

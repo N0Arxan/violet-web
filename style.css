@@ -15,6 +15,44 @@ body{
     font-style: normal;
     color: white;
 }
+
+/* Loader styles */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #A672AB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #5f426b;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Content styles */
+
+
+
+
 nav{
     height: 7vh;
     width: 100%;
@@ -311,7 +349,7 @@ nav a:nth-child(2){
 
 .places{
     width: 75%;
-    height: 112vh;
+    height: 115vh;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -383,7 +421,7 @@ nav a:nth-child(2){
     margin: 0.5vh;
     width: 32%;
     height: 100%;
-    background-color: #3d768a;
+    background-color: #5f426b;
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -392,6 +430,23 @@ nav a:nth-child(2){
     align-items: center;
     color: white;
     font-size: 2vw;
+}
+.TikiTaka button{
+    width: 100%;
+    box-shadow: 0px 10px 14px -7px#5f426b;
+    transition: all 500ms;
+	background-color:#5f426b;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:18px;
+	font-weight:bold;
+	padding:12px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+    border: none;
+    margin-top: 4vh;
 }
 
 
