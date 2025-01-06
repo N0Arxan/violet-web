@@ -138,7 +138,7 @@ function checkResult(moves){
         }
     }
     if (numMoves===9){
-        return [false,true];
+        return [false,false];
     }
     return [false,true];
     
