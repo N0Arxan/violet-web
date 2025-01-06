@@ -706,16 +706,4 @@ footer a{
 
 }
 
-@media (height <= 726px){
 
-    .half{
-        height: 140vh;
-    }
-    .places{
-        height: 135vh;
-    }
-    .main{
-        height: 145vh;
-    }
-
-}
