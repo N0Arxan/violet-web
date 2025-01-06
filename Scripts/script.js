@@ -1,3 +1,13 @@
+const cssLink = document.createElement('link');
+cssLink.setAttribute('rel','stylesheet');
+cssLink.href = `style.css?ts=${new Date().getTime()}`;
+document.head.appendChild(cssLink);
+
+
+//////////////////////////////////////////////////////
+
+
+
 $(window).on('load', function () {
     setTimeout(function () {
         $('#loader').fadeOut('slow', function () {
@@ -7,24 +17,23 @@ $(window).on('load', function () {
 });
 /////////////////////////////////////////////////////
 
-const translatedElement = document.getElementById('translated');
+
 let tolang = "en/es"
 
-
-
-
-document.getElementById("Translate").addEventListener("click", async () => {
+document.getElementById("Translate").addEventListener("mouseover", () => {
     
-
-    // Show "Translating..." while waiting for the translation
+    const translatedElement = document.getElementById('translated');
     text = translatedElement.innerText
-    translatedElement.textContent = "Translating...";
+    translatedElement.remove()
+    
 
     fetch(`https://lingva.ml/api/v1/${tolang}/${text}`)
         .then(res => res.json())
         .then(data => {
-            translatedElement.textContent = data.translation
-            translatedElement.appendChild(span)
+            const pr = document.createElement("p")
+            pr.id="translated"
+            pr.innerText=data.translation
+            document.getElementsByClassName('text')[0].appendChild(pr) 
         })
         .catch(err => console.error(err));
     
@@ -33,10 +42,30 @@ document.getElementById("Translate").addEventListener("click", async () => {
 
 })
 
+///////////////////////////////////////////////////
+let estaBien = 0
+const submit = document.getElementById('submit')
+submit.addEventListener('click',()=>{
+    let inputs = document.getElementsByTagName('input')
+    for (var input of inputs){
+        if (input.value === ""){
+            estaBien+=1
+        }
+    }
+    if (estaBien===0){
+        alert(`Thanks for your support ${inputs[0].value} we will contact you as soon as posible `)
+        
+    }else{
+        alert('compelet the form correctly pls ;) ')
+        
+    }
 
+})
+document.getElementsByTagName('button')[1].style.color='#ffffff';
 
 
 ////////////////////////////////////////////////////
+let numMoves = 0
 
 const reset = document.getElementById('reset')
 function recordDivs(){
@@ -69,11 +98,13 @@ function changeState(div,turn){
     }else{
         switch (turn) {
             case "x":
+                numMoves++;
                 div.innerText = turn;
                 div.removeEventListener("click", div.handler)
                 return "o"
 
             case "o":
+                numMoves++;
                 div.innerText = turn;
                 div.removeEventListener("click", div.handler)
                 return "x"
@@ -97,6 +128,7 @@ function checkResult(moves){
         [0,3,6],[1,4,7],[2,5,8], //vertical
         [2,4,6],[0,4,8]          // diagonal
     ]
+    console.log(numMoves)
     for (let comb of winnerCombination) {
         if (moves[comb[0]] === moves[comb[1]] && moves[comb[1]] === moves[comb[2]]) {
             if (moves[comb[0]] !==""){
@@ -105,19 +137,31 @@ function checkResult(moves){
             }
         }
     }
-    return [false,false]
+    if (numMoves===9){
+        return [false,true];
+    }
+    return [false,true];
+    
+    
 }
 
 function stopGame(array,houses) {
-    for(elem of array){
-        houses[elem].style.backgroundColor = "green"
+    if (array){     
+        for(elem of array){
+            houses[elem].style.backgroundColor = "green"
+        }
+        houses.forEach( div =>{
+            div.removeEventListener("click", div.handler)
+        })
+    }else{
+        houses.forEach( div =>{
+            div.style.backgroundColor = "yellow"
+            div.removeEventListener("click", div.handler)
+        })
     }
-    houses.forEach( div =>{
-        div.removeEventListener("click", div.handler)
-    })
-
-    reset.style.display = 'block'
     
+    numMoves=0
+    reset.style.display = 'block'
     reset.addEventListener('click', ()=>{
         houses = recordDivs()
         houses.forEach(div=>{
@@ -139,13 +183,21 @@ function addEventL(div) {
         if (res[0] !== false) {
             console.log(res[0] + " has won " + res[1]);
             stopGame(res[1], houses);
+        }else if (res[0]===res[1]){
+            console.log("is a draw");
+            stopGame(res[1], houses);
         }
     }
     div.addEventListener("click", main);
 
     div.handler = main;
 }
-
+let i=0
+do{
+    i++
+    console.log("no hay uso para while")
+    console.log(" **** ")
+}while(i<3)
 
 
 

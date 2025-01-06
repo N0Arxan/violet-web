@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+
     <title>Visit VIC</title>
 </head>
 <body>
@@ -96,7 +96,7 @@
                         <input type="text" placeholder="Enter your full name ...">
                         <input type="tel" placeholder="Enter your phone number ...">
                         <input type="email" placeholder="Enter your Email@ ...">
-                        <button type="submit">Submit</button>
+                        <button type="submit" id="submit">Submit</button>
                     </form>
                 </div>
             </div>
@@ -150,6 +150,10 @@
     </footer>
 </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="Scripts/script.js"></script>
+    <script>
+        const script = document.createElement('script');
+        script.src = `Scripts/script.js?ts=${new Date().getTime()}`;
+        document.body.appendChild(script);
+    </script>
 </body>
 </html>
